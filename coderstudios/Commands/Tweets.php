@@ -31,7 +31,11 @@ class Tweets {
 					'next_at' 		=> date('Y-m-d H:i:s', strtotime('+' . $minutes . ' minutes')),
 				];
 				$this->tweets->update($tweet->id, $data);
-				$result = $this->twitter->post('statuses/update', ['status' => $tweet->tweet, 'format' => 'json']);
+				if ($tweet->name == 'Free Photos') {
+					$result = $this->twitter->post('statuses/update_with_media', ['media[]' => public_path() . '/images/kitten-2-21-08-2016.jpg', 'status' => $tweet->tweet, 'format' => 'json']);
+				} else {
+					$result = $this->twitter->post('statuses/update', ['status' => $tweet->tweet, 'format' => 'json']);
+				}
 			}
 		}
 	}
