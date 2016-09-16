@@ -17,7 +17,7 @@ class Tweets {
 
 	public function tweet()
 	{
-		$minutes = mt_rand(720,10080);
+		$minutes = mt_rand(2880,10080);
 
 		$date1 = date('Y-m-d H:i:s',strtotime('-3 minutes'));
 		$date2 = date('Y-m-d H:i:s',strtotime('+3 minutes'));
